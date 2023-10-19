@@ -1,3 +1,4 @@
+from typing import Any
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -50,3 +51,9 @@ class Profile(UpdateView):
   
   def get_object(self):
     return User.objects.get(pk = self.request.user.pk)
+  
+  def get_form_kwargs(self):
+    kwargs = super(Profile, self).get_form_kwargs()
+    kwargs.update({
+      "user": self.request.user
+    })
