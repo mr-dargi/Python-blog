@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import User
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, PasswordChangeView
 from .forms import ProfileForm
 from .mixins import (
                       FieldsMixin,
@@ -70,3 +70,6 @@ class Login(LoginView):
       return reverse_lazy("account:home")
     else:
       return reverse_lazy("account:profile")
+
+class PasswordChange(PasswordChangeView):
+  success_url = reverse_lazy("account:password_change_done")
