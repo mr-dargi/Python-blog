@@ -1,6 +1,6 @@
 from django.contrib import admin, messages
 from django.utils.translation import ngettext
-from .models import Article, Category
+from .models import Article, Category, IPAddress
 
 # Register your models here.
 @admin.action(description="انتشار مقالات انتخاب شده")
@@ -76,3 +76,4 @@ class ArticleAdmin(admin.ModelAdmin):
   
 
 admin.site.register(Article, ArticleAdmin)
+admin.site.register(IPAddress)

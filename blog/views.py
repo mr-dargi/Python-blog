@@ -15,7 +15,14 @@ class ArticleList(ListView):
 class ArticleDetail(DetailView):
   def get_object(self):
     slug = self.kwargs.get("slug")
-    return get_object_or_404(Article.objects.published(), slug=slug)
+    article = get_object_or_404(Article.objects.published(), slug=slug)
+    
+    ip_address = self.request.user.ip_address
+    viewsCount = article.hits.all()
+    if ip_address not in viewsCount:
+      article.hits.add(ip_address)
+    
+    return article
   
   
 class ArticlePreview(AuthorAccessMixin, DetailView):

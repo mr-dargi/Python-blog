@@ -7,7 +7,8 @@ from extensions.utils import jalali_converter
 from django.contrib.contenttypes.fields import GenericRelation
 from comment.models import Comment
 
-# Create your models here.
+
+# My manager
 class ArticleManager(models.Manager):
   def published(self):
     return self.filter(status="p")
@@ -16,6 +17,11 @@ class ArticleManager(models.Manager):
 class CategoryManager(models.Manager):
   def active(self):
     return self.filter(status=True)
+
+
+# Create your models here.
+class IPAddress(models.Model):
+  ip_address = models.GenericIPAddressField(verbose_name="آدرس آی پی")
 
 
 class Category(models.Model):
@@ -56,6 +62,7 @@ class Article(models.Model):
   is_special = models.BooleanField(default=False, verbose_name="مقاله ویژه")
   status = models.CharField(max_length=1, choices=STATUS_CHOICES, verbose_name = "وضعیت")
   comments = GenericRelation(Comment)
+  hits = models.ManyToManyField(IPAddress, blank=True, related_name="hits", verbose_name="بازدید ها")
   
   class Meta:
     verbose_name = "مقاله"
