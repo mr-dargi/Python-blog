@@ -3,6 +3,7 @@
 {% block title %}{% endblock %}
 
 {% load static %}
+{% load base_tags %}
 
 {% block main %}
 
@@ -25,6 +26,12 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
 
                 {% block header %}{% endblock %}
+                
+                <aside>
+                    {% popular_articles %}
+                    {% hot_articles %}
+                </aside>
+
                 {% for article in object_list %}
 
                     <!-- Post preview-->

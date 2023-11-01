@@ -1,5 +1,6 @@
 {% extends "blog/base.html" %}
 
+{% load base_tags %}
 {% block title %} | {{ object.title }} {% endblock %}
 
 {% block main %}
@@ -29,6 +30,10 @@
        
     <!-- Post Content-->
     <article class="mb-4">
+        <aside>
+            {% popular_articles %}
+            {% hot_articles %}
+        </aside>
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7 text-justify">

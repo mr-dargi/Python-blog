@@ -98,3 +98,19 @@ h3.post-subtitle {
 .nav ul > li > ul > li > ul > li:hover > ul {
   display: block !important;
 }
+
+aside {
+  width: 240px;
+  position: absolute;
+  left: 12px;
+  top: 100%;
+}
+
+.popular_articles {
+  border: 1px solid #bfbfbf;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: -5px 5px #d5d5d5;
+  background-color: #ffffff;
+}
